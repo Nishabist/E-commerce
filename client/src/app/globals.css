@@ -1,0 +1,62 @@
+.form{
+  border: 1px solid black;
+  width:300px;
+  margin: auto;
+  background-color: #e1b9b9;
+  color: #090000;
+  align-items: center;
+  text-align: center;
+  height: 400px;
+  padding-top: 50px;
+}
+button{
+  border-radius: 50px;
+  background-color: antiquewhite;
+  margin: 5px;
+}
+.form1{
+  border: 1px solid black;
+  width:300px;
+  margin: auto;
+  background-color: #e1b9b9;
+  color: #090000;
+  align-items: center;
+  text-align: center;
+  height: 500px;
+  padding-top: 50px;
+}
+
+
+
+
+
+
+
+
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities; */
+
+/* :root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+} */
