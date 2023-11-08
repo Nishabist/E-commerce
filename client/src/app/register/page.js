@@ -4,6 +4,7 @@ import React from 'react';
  import { Formik, Form, Field } from 'formik';
  import * as Yup from 'yup';
  import Link from 'next/link'
+ import {  message } from 'antd';
  import Image from 'next/image'
 
  const SignupSchema = Yup.object().shape({
@@ -20,18 +21,29 @@ import React from 'react';
    .min(5, 'Too Short!')
    .max(50, 'Too Long!')
    .required('Required'),
+   phonenumber: Yup.string()
+   .min(2, 'Too Short!')
+   .max(11, 'Too Long!')
+   .required('Required'),
    password: Yup.string().required('Password is required'),
-   passwordConfirm: Yup.string()
-      .oneOf([Yup.ref('password'), null], 'Passwords must match')
+ 
  });
  
  export const register = () => {
-  const handleRegister=(value)=>{
+  const [messageApi, contextHolder] = message.useMessage();
+  const handleRegister=async(values)=>{
     fetch('http://localhost:4000/register',{
       method:'POST',
-      headers:{'Content-Types':'application/json'},
+      headers:{'Content-Type':'application/json'},
       body:JSON.stringify(values)
     })
+    const data = await res.json()
+    messageApi.open({
+      type: res.status == 200 ? 'success': 'Phone number already exist',
+      content: data.msg,
+    });
+  console.log(res)
+    
   }
   return(
    <div className='form1'>
@@ -48,16 +60,18 @@ import React from 'react';
          lastName: '',
          email: '',
          address:'',
+         phonenumber:'',
          password:''
        }}
        validationSchema={SignupSchema}
        onSubmit={values => {
          // same shape as initial values
-         console.log(values);
+        handleRegister(values)
        }}
      >
        {({ errors, touched }) => (
          <Form>
+            {contextHolder}
            <Field name="firstName" placeholder="Enter your first name"/>
            {errors.firstName && touched.firstName ? (
              <div>{errors.firstName}</div>
@@ -69,6 +83,9 @@ import React from 'react';
            <br /><br />
            <Field name="email" type="email" placeholder="Enter your email"/>
            {errors.email && touched.email ? <div>{errors.email}</div> : null}
+           <br /><br />
+           <Field name="phonenumber" type="string" placeholder="Enter your phonrnumber"/>
+           {errors.phonenumber && touched.phonenumber ? <div>{errors.phonenumber}</div> : null}
            <br />
            <br />
            <Field name="address" type="text" placeholder="Enter your address"/>
@@ -76,8 +93,7 @@ import React from 'react';
            <Field name="password" type="password" placeholder="Enter your password"/>
            {errors.password && touched.password? <div>{errors.password}</div> : null}
            <br /><br />
-           <Field name=" passwordConfirm" type="password" placeholder="Enter your previous password"/>
-           <br /> <br /> <button type="submit">Submit</button>
+            <button type="submit">Submit</button>
           <br />
           already have account
           <br />
