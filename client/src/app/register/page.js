@@ -31,19 +31,18 @@ import React from 'react';
  
  export const register = () => {
   const [messageApi, contextHolder] = message.useMessage();
-  const handleRegister=async(values)=>{
-    fetch('http://localhost:4000/register',{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify(values)
+  const handleRegister = async(values) => {
+  const res = await fetch('http://localhost:4000/register', {
+      method:'POST', 
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(values)
     })
     const data = await res.json()
-    messageApi.open({
-      type: res.status == 200 ? 'success': 'Phone number already exist',
-      content: data.msg,
-    });
-  console.log(res)
-    
+      messageApi.open({
+        type: res.status == 200 ? 'success': 'error',
+        content: data.msg,
+      });
+    console.log(res)
   }
   return(
    <div className='form1'>
