@@ -4,18 +4,36 @@ import React from 'react';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import Link from 'next/link'
+import {  message } from 'antd';
 import Image from 'next/image'
 
 const SignupSchema = Yup.object().shape({
 
-  email: Yup.string().email('Invalid email').required('Required'),
+  phonenumber: Yup.string().required('Required'),
   password:Yup.string().
   required('Required')
 });
 
-export const index = () => (
+export const index = () => {
+  const [messageApi, contextHolder] = message.useMessage();
+  const handleLogin = async(values) => {
+    const res = await fetch('http://localhost:4000/login', {
+        method:'POST', 
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(values)
+      })
+      const data = await res.json()
+        messageApi.open({
+          type: res.status == 200 ? 'success': 'error',
+          content: data.msg,
+        });
+      console.log(res)
+    } 
+  
+  return(
   <div className='form'>
     <h1>Login</h1>
+    
     <Image
       src="/ecommerce.jpg"
       width={80}
@@ -31,14 +49,14 @@ export const index = () => (
       validationSchema={SignupSchema}
       onSubmit={values => {
         // same shape as initial values
-        console.log(values);
+        handleLogin(values)
       }}
     >
       {({ errors, touched }) => (
         <Form >
-         
-          <Field name="email" type="email" placeholder="Enter your email" />
-          {errors.email && touched.email ? <div>{errors.email}</div> : null}
+         {contextHolder}
+          <Field name="phonenumber" type="phonenumber" placeholder="Enter your email" />
+          {errors.phonenumber && touched.phonenumber ? <div>{errors.phonenumber}</div> : null}
           <br />
           <br />
           <Field name="password" type="password" placeholder="Enter your password"/>
@@ -53,5 +71,5 @@ export const index = () => (
       )}
     </Formik>
   </div>
-);
+)};
 export default index 

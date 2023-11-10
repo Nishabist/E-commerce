@@ -18,7 +18,7 @@ import React from 'react';
      .required('Required'),
    email: Yup.string().email('Invalid email').required('Required'),
    address: Yup.string()
-   .min(5, 'Too Short!')
+   .min(2, 'Too Short!')
    .max(50, 'Too Long!')
    .required('Required'),
    phonenumber: Yup.string()
@@ -62,10 +62,10 @@ import React from 'react';
          phonenumber:'',
          password:''
        }}
-       validationSchema={SignupSchema}
+      validationSchema={SignupSchema}
        onSubmit={values => {
          // same shape as initial values
-        handleRegister(values)
+      handleRegister(values)
        }}
      >
        {({ errors, touched }) => (
