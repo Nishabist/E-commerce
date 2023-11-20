@@ -38,7 +38,7 @@ app.post('/register',async(req,res)=>{
 }
 )
 
-app.post('/login',async(res,req)=>{
+app.post('/login',async(req,res)=>{
 //check if phone number exists
 console.log(req.body)
 const userDetail=await User.findOne({phonenumber:req.body.phonenumber})
