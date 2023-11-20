@@ -29,7 +29,7 @@ import React from 'react';
  
  });
  
- export const register = () => {
+    const register = () => {
   const [messageApi, contextHolder] = message.useMessage();
   const handleRegister = async(values) => {
   const res = await fetch('http://localhost:4000/register', {
@@ -96,7 +96,7 @@ import React from 'react';
           <br />
           already have account
           <br />
-          <Link href="../">login</Link>
+          <Link href="/login">login</Link>
          </Form>
        )}
      </Formik>

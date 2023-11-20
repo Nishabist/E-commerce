@@ -26,6 +26,18 @@ button{
   padding-top: 50px;
 }
 
+.top{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: start;
+  gap: 15px;
+  line-height: 30px;
+  background-color: #e1b9b9;
+  
+  list-style: none;
+}
 
 
 

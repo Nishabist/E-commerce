@@ -39,16 +39,19 @@ app.post('/register',async(req,res)=>{
 )
 
 app.post('/login',async(res,req)=>{
+//check if phone number exists
+console.log(req.body)
+const userDetail=await User.findOne({phonenumber:req.body.phonenumber})
 
-const Userdetail=await User.findOne({phonenumber: req.body.phonenumber })
-if(!Userdetail){
-  res.json({msg:'Invalid User'})
+if(!userDetail){
+  res.status(401).json({msg:'Invalid User'})
 }else{
-  const Ismatched=await bcrypt.compare(req.body.phonenumber,phonenumber)
-  if(Ismatched){
+  
+  const isMatched=await bcrypt.compare(req.body.password,userDetail.password)
+  if(isMatched){
     res.json({msg:'Login sucessfully'})
   }else{
-    res.json({msg:'Password doesnot matched'})
+    res.status(401).json({msg:'Password doesnot matched'})
   }
 }
 })

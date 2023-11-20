@@ -1,75 +1,101 @@
 'use client'
 
 import React from 'react';
-import { Formik, Form, Field } from 'formik';
-import * as Yup from 'yup';
-import Link from 'next/link'
-import {  message } from 'antd';
 import Image from 'next/image'
+import Link from 'next/link'
 
-const SignupSchema = Yup.object().shape({
-
-  phonenumber: Yup.string().required('Required'),
-  password:Yup.string().
-  required('Required')
-});
-
-export const index = () => {
-  const [messageApi, contextHolder] = message.useMessage();
-  const handleLogin = async(values) => {
-    const res = await fetch('http://localhost:4000/login', {
-        method:'POST', 
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(values)
-      })
-      const data = await res.json()
-        messageApi.open({
-          type: res.status == 200 ? 'success': 'error',
-          content: data.msg,
-        });
-      console.log(res)
-    } 
-  
+const App=()=>{
   return(
-  <div className='form'>
-    <h1>Login</h1>
-    
-    <Image
+    <>
+
+  <ul className='top'>
+    <li> <Image
       src="/ecommerce.jpg"
-      width={80}
-      height={80}
+      width={40}
+      height={40}
       alt="Picture of the author"
-    />
-    <Formik
-      initialValues={{
-       
-        email: '',
-        password:''
-      }}
-      validationSchema={SignupSchema}
-      onSubmit={values => {
-        // same shape as initial values
-        handleLogin(values)
-      }}
-    >
-      {({ errors, touched }) => (
-        <Form >
-         {contextHolder}
-          <Field name="phonenumber" type="phonenumber" placeholder="Enter your email" />
-          {errors.phonenumber && touched.phonenumber ? <div>{errors.phonenumber}</div> : null}
-          <br />
-          <br />
-          <Field name="password" type="password" placeholder="Enter your password"/>
-          {errors.password && touched.password? <div>{errors.password}</div> : null}
-          <br />
-          <br />
-          <button type="submit">Submit</button>
-          <br />
-          if you don"t have account
-          <br /><Link href="./register">go to register</Link>
-        </Form>
-      )}
-    </Formik>
-  </div>
-)};
-export default index 
+    /></li>
+    <li><Link href="../login">Login</Link>    </li>
+    <li><Link href="../register">Register</Link> </li>
+  </ul>
+
+    </>
+  )
+}
+export default App
+// import { Formik, Form, Field } from 'formik';
+// import { Breadcrumb, Layout, Menu, theme, Input } from 'antd';
+// import { AudioOutlined } from '@ant-design/icons';
+// const { Search } = Input;
+// const { Header, Content, Footer } = Layout;
+// const App = () => {
+//   const {
+//     token: { colorBgContainer },
+//   } = theme.useToken();
+
+//   const suffix = (
+//     <AudioOutlined
+//       style={{
+//         fontSize: 16,
+//         color: '#1677ff',
+//       }}
+//     />
+//   );
+//   const onSearch = (value, _e, info) => console.log(info?.source, value);
+//   return (
+//     <Layout className="layout">
+//       <Header
+//         style={{
+//           display: 'flex',
+//           alignItems: 'center',
+//           backgroundColor:'#fff',
+//           border: '1px solid'
+//         }}
+//       >
+//         <div className="demo-logo" />
+      
+//         <Menu
+//           theme="dark"
+//           mode="horizontal"
+//           defaultSelectedKeys={['2']}
+//           items={[{key:1, label:"login"},{key:2, label:"sign up"} ]}
+//         />
+//       </Header>
+//       <Content
+//         style={{
+//           padding: '0 50px',
+//         }}
+//       >
+//         <Breadcrumb
+//           style={{
+//             margin: '16px 0',
+//           }}
+//         >
+//           <Search
+//       placeholder="Enter Your Traking Order"
+//       enterButton="Search"
+//       size="large"
+//       suffix={suffix}
+//       onSearch={onSearch}
+//     />
+//         </Breadcrumb>
+//         <div
+//           className="site-layout-content"
+//           style={{
+//             background: colorBgContainer,
+//           }}
+//         >
+//           Content
+//         </div>
+//       </Content>
+//       <Footer
+//         style={{
+//           textAlign: 'center',
+//         }}
+//       >
+//         Ant Design ©2023 Created by Ant UED
+//       </Footer>
+//     </Layout>
+//   );
+// };
+// export default App;
