@@ -10,8 +10,7 @@ import {  message } from 'antd';
 const SignupSchema = Yup.object().shape({
 
   productName: Yup.string().required('Required'),
-  Description:Yup.string().
-  required('Required'),
+  Description:Yup.string(),  
   Brand:Yup.string(),
   price:Yup.string(),
   Image:Yup.string(),
@@ -42,14 +41,14 @@ export const index = () => {
     <Formik
       initialValues={{
        
-        productName : '',
+        productName: '',
         Description:'',
         Brand:'',
         price:'',
         Image:'',
         Category:'', 
       }}
-      // validationSchema={SignupSchema}
+      validationSchema={SignupSchema}
       onSubmit={values => {
         // same shape as initial values
         productHandle(values)
@@ -58,8 +57,8 @@ export const index = () => {
       {({ errors, touched }) => (
         <Form >
          {contextHolder}
-          <Field name=" productName" type="text" placeholder="Enter your  productName" />
-          {errors. productName && touched. productName ? <div>{errors. productNamer}</div> : null}
+          <Field name="productName" type="text" placeholder="Enter your  productName" />
+          {errors.productName && touched.productName ? <div>{errors.productNamer}</div> : null}
           <br />
           <br />
           <Field name="Description" type="text" placeholder="Enter about your product"/>

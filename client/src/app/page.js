@@ -3,8 +3,21 @@
 import React from 'react';
 import Image from 'next/image'
 import Link from 'next/link'
+import { Card, Flex } from 'antd';
+import { useEffect,useState } from 'react';
+import Meta from 'antd/es/card/Meta';
 
 const App=()=>{
+  const[productList,setproductList]=useState([])
+ const fetchProduct=async()=>{
+  const res=await fetch('http://localhost:4000/products')
+  const data=await res.json()
+  setproductList(data.productList)  
+}
+
+  useEffect(()=> {
+   fetchProduct()
+  },[])
   return(
     <>
 
@@ -18,7 +31,21 @@ const App=()=>{
     <li><Link href="../login">Login</Link>    </li>
     <li><Link href="../register">Register</Link> </li>
   </ul>
-
+{/* {JSON.stringify(productList)} */}
+{productList.length>0 && productList.map((item,id)=>{
+  return(
+    <div>
+      {/* {item.productName} */}
+      <Card 
+    hoverable
+    style={{ width: 240 , display:Flex,gap:5}}
+    cover={<img alt="example" src="" />}
+  >
+    <Meta  title={item.productName} description={item.Description} />
+  </Card>
+    </div>
+  )
+})}
     </>
   )
 }
