@@ -35,7 +35,7 @@ export const index = () => {
     <h1>Login</h1>
     
     <Image
-      src="/ecommerce.jpg"
+      src="/Sahayogi.png"
       width={80}
       height={80}
       alt="Picture of the author"
@@ -67,6 +67,7 @@ export const index = () => {
           <br />
           if you don"t have account
           <br /><Link href="./register">go to register</Link>
+          <link href=''></link>
         </Form>
       )}
     </Formik>

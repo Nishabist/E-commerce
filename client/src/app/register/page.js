@@ -48,7 +48,7 @@ import React from 'react';
    <div className='form1'>
      <h1>Register</h1>
      <Image
-      src="/ecommerce.jpg"
+      src="/Sahayogi.png"
       width={80}
       height={80}
       alt="Picture of the author"
