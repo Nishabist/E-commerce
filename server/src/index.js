@@ -1,9 +1,11 @@
 const express = require('express')
 const connection=require('./db/connection')
 const app = express()
+require('dotenv').config()
 const userrouter=require('./routes/user.routes')
 const productRouter=require('./routes/products.routes')
-const port = 4000
+console.log(process.env.SECRET_KEY)
+const port = process.env.PORT
 const cors=require('cors')
 
 connection()

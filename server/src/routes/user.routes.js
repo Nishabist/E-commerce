@@ -3,6 +3,7 @@ var router = express.Router();
 router.use(express.json());
 const User=require('../models/user')
 const bcrypt=require('bcrypt')
+const jwt = require('jsonwebtoken');
 const saltRounds=10;
 
 router.post('/register',async(req,res)=>{
@@ -21,6 +22,7 @@ router.post('/register',async(req,res)=>{
       //create new user with hash password
       const data=await User.create(req.body)
      if(data) res.json({msg :'User registered. Please login'})
+   
     }
     }
     //to stop server crash
@@ -41,7 +43,10 @@ router.post('/register',async(req,res)=>{
      
      const isMatched=await bcrypt.compare(req.body.password,userDetail.password)
      if(isMatched){
-       res.json({msg:'Login sucessfully'})
+      //it generate token for the user
+      const token = jwt.sign({ phonenumber:req.body.phonenumber }, process.env.SECRET_KEY);
+      //the content inside curly bracket is a paylod
+       res.json({msg:'Login sucessfully',token})
      }else{
        res.status(401).json({msg:'Password doesnot matched'})
      }
