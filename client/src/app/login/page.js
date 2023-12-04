@@ -1,6 +1,7 @@
 'use client'
 
 import React from 'react';
+
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import Link from 'next/link'
@@ -63,11 +64,11 @@ export const index = () => {
           {errors.password && touched.password? <div>{errors.password}</div> : null}
           <br />
           <br />
-          <button type="submit">Submit</button>
+          <button className='btn' type="submit">Submit</button>
           <br />
           if you don"t have account
           <br /><Link href="./register">go to register</Link>
-          <link href=''></link>
+         
         </Form>
       )}
     </Formik>

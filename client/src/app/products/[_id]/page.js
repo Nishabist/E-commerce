@@ -14,9 +14,9 @@ function page() {
       fetchProduct()
      },[])
   return (
-    <div>
-      I am product page
-    </div>
+    <>
+    <div>hello</div>
+    </>
   )
 }
 

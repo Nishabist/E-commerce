@@ -1,16 +1,18 @@
 'use client'
 
 import React from 'react';
+import { useSelector, UseSelector } from 'react-redux';
 // import Image from 'next/image'
 // import Link from 'next/link'
 import Card from './Component/card/page';
 import Navbar from './Component/Navbar/page';
-import Carousel from './Component/Carousel/page';
+//import Carousel from './Component/Carousel/page';
 import { useEffect,useState } from 'react';
 import { Pagination } from 'antd';
 
 
 const App=()=>{
+  const {age}=useSelector(state=>state.user)
   const[productList,setproductList]=useState([])
   const [count,setCount] = useState(0)
  const fetchProduct=async(page=1)=>{
@@ -25,9 +27,11 @@ const App=()=>{
   },[])
   return(
     <>
+   
 <Navbar/>
-<Carousel/>
+{/* <Carousel/> */}
 <div className='flex'>
+  {age}
 {productList.length>0 && productList.map((item,id)=>{
   
   return(
@@ -40,7 +44,8 @@ const App=()=>{
 })}
 
 </div>
-<Pagination onChange={(page)=>fetchProduct(page)} defaultCurrent={1} total={50} />
+
+<Pagination onChange={(page)=>fetchProduct(page)} defaultCurrent={1} total={count} pageSize={3}/>
 </>)}
 
  

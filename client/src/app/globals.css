@@ -1,31 +1,52 @@
-
-/* @tailwind base;
+ /* @tailwind base;
 @tailwind components;
-@tailwind utilities;   */
+@tailwind utilities;    
 
 
+
+
+ 
+   :root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+} */
+
+
+
+ 
 *{
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
 
+
 .form{
   border: 1px solid black;
-  width:300px;
-  margin: auto;
-  background-color: #e1b9b9;
-  color: #090000;
-  align-items: center;
-  text-align: center;
-  height: 400px;
-  padding-top: 50px;
+ width: 300px;
+ margin: auto;
+ align-items: center;
+ text-align: center;
+ height: 400px;
+ color: #090000;
+ background-color: #e1b9b9;
+ padding-top: 50px;
 }
 button{
   border-radius: 50px;
-  background-color: antiquewhite;
+  background-color: rgb(215, 210, 226);
   margin: 5px;
 }
+
 .form1{
   border: 1px solid black;
   width:300px;
@@ -34,18 +55,16 @@ button{
   color: #090000;
   align-items: center;
   text-align: center;
-  height: 500px;
+  height: 600px;
   padding-top: 50px;
 }
 
 .top{
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
+
   display: flex;
   justify-content: start;
   gap: 15px;
-  line-height: 30px;
+  line-height: 10px;
   background-color: #d6d3d1;
   
   list-style: none;
@@ -63,7 +82,7 @@ button{
  
   display: flex;
   justify-content: space-between;
-   line-height: 60px;
+ line-height: 50px;
    font-weight: bold;
    background-color: bisque;
   position: sticky;
@@ -72,34 +91,7 @@ button{
 li{
   list-style: none;
 }
-:link{
+link{
   text-decoration: none;
-}
+} 
 
-
-
-
- 
- /* :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-} */ 

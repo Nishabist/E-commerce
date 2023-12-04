@@ -46,7 +46,7 @@ router.post('/register',async(req,res)=>{
       //it generate token for the user
       const token = jwt.sign({ phonenumber:req.body.phonenumber }, process.env.SECRET_KEY);
       //the content inside curly bracket is a paylod
-       res.json({msg:'Login sucessfully',token})
+       res.json({msg:'Login sucessfully',token,userDetail})
      }else{
        res.status(401).json({msg:'Password doesnot matched'})
      }

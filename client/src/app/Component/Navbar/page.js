@@ -10,6 +10,14 @@ function page() {
             <li> <Link href='./login'><Image src="/Sahayogi.png" width={80} height={80} alt="Picture of the author" /></Link> </li>
             <li>Category</li>
             <li><input type='search' placeholder='Search....'/></li>
+            {/* <li> <Search
+      placeholder="Enter Your Traking Order"
+      enterButton="Search"
+      size="medium"
+      suffix={suffix}
+      onSearch={onSearch}
+    /> */}
+      {/* </li> */}
             <li>New Product</li>
             <li><Link href='./login'>login</Link></li>
             <li><Link href='./register'>register</Link></li>
