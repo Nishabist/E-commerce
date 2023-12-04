@@ -43,10 +43,19 @@ router.post('/register',async(req,res)=>{
      
      const isMatched=await bcrypt.compare(req.body.password,userDetail.password)
      if(isMatched){
+      const userWithoutPassword={
+        _id:userDetail._id,
+        phonenumber:userDetail.phonenumber,
+        address:userDetail.address,
+        firstname:userDetail.firstname,
+        lastname:userDetail.lastname,
+        email:userDetail.email,
+
+      };
       //it generate token for the user
       const token = jwt.sign({ phonenumber:req.body.phonenumber }, process.env.SECRET_KEY);
       //the content inside curly bracket is a paylod
-       res.json({msg:'Login sucessfully',token,userDetail})
+       res.json({msg:'Login sucessfully',token,user:userWithoutPassword})
      }else{
        res.status(401).json({msg:'Password doesnot matched'})
      }
