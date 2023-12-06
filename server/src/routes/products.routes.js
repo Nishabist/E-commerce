@@ -23,7 +23,7 @@ router.post('/products',async(req,res)=>{
   }
      )
 
-     router.get('/products/:id',async(req,res)=>{
+     router.get('/products/:_id',async(req,res)=>{
       const data=await Product.findById(req.params.id)
       if(data){
         res.json({productList:data})

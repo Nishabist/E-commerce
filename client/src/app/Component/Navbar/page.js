@@ -1,8 +1,18 @@
 import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
+import { useSelector, UseSelector } from 'react-redux';
+import { Avatar, Divider, Tooltip ,Button, Popover, ConfigProvider} from 'antd';
 
 function page() {
+  const {userDetails} = useSelector(state=>state.user)
+  const text = <span>{JSON.stringify(userDetails)}</span>;
+  const content = (
+    <div>
+      <p>Profile</p>
+      <p>logout</p>
+    </div>
+  );
   return (
     <div>
      <div >
@@ -18,7 +28,23 @@ function page() {
       onSearch={onSearch}
     /> */}
       {/* </li> */}
+  
             <li>New Product</li>
+            <li>
+      
+            <div
+        style={{
+          marginInlineStart: 80,
+          clear: 'both',
+          whiteSpace: 'nowrap',
+        }}
+      >
+        <Popover placement="bottomLeft" title={text} content={content}>
+        <Avatar src="https://xsgames.co/randomusers/avatar.php?g=pixel&key=1" />
+        </Popover>
+        
+      </div>
+        </li>
             <li><Link href='./login'>login</Link></li>
             <li><Link href='./register'>register</Link></li>
         </ul>

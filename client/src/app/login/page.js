@@ -6,6 +6,11 @@ import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import Link from 'next/link'
 import {  message } from 'antd';
+
+import {useRouter} from 'next/navigation'
+
+import {useDispatch} from 'react-redux';
+import {setLoginDetails} from '../../redux/reducerSlices/userSlice'
 import Image from 'next/image'
 
 const SignupSchema = Yup.object().shape({
@@ -16,6 +21,8 @@ const SignupSchema = Yup.object().shape({
 });
 
 export const index = () => {
+  const router = useRouter()
+  const dispatch=useDispatch()
   const [messageApi, contextHolder] = message.useMessage();
   const handleLogin = async(values) => {
     const res = await fetch('http://localhost:4000/login', {
@@ -28,7 +35,11 @@ export const index = () => {
           type: res.status == 200 ? 'success': 'error',
           content: data.msg,
         });
-      console.log(res)
+        if(res.status==200){
+          dispatch(setLoginDetails(data.user))
+           router.push('/')
+        }
+    
     } 
   
   return(
@@ -64,6 +75,7 @@ export const index = () => {
           {errors.password && touched.password? <div>{errors.password}</div> : null}
           <br />
           <br />
+          
           <button className='btn' type="submit">Submit</button>
           <br />
           if you don"t have account

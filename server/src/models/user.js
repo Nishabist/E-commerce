@@ -8,6 +8,11 @@ const users = new Schema({
   address:String,
  phonenumber:String,
  password:String,
+ category:{
+    type:String,
+    enum:['admin','user'],
+    default:'user'
+ }
 
   
 });

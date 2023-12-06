@@ -21,6 +21,7 @@ import React from 'react';
    .min(2, 'Too Short!')
    .max(50, 'Too Long!')
    .required('Required'),
+   category:Yup.string(),
    phonenumber: Yup.string()
    .min(2, 'Too Short!')
    .max(11, 'Too Long!')
@@ -60,6 +61,7 @@ import React from 'react';
          email: '',
          address:'',
          phonenumber:'',
+         category:'',
          password:''
        }}
       validationSchema={SignupSchema}
@@ -87,6 +89,14 @@ import React from 'react';
            {errors.phonenumber && touched.phonenumber ? <div>{errors.phonenumber}</div> : null}
            <br />
            <br />
+           enter your category
+           <Field as="select" name="category"  >
+            
+             <option value="seller">Seller</option>
+             <option value="user">user</option>
+             
+           </Field>
+           <br /><br />
            <Field name="address" type="text" placeholder="Enter your address"/>
            <br /><br />
            <Field name="password" type="password" placeholder="Enter your password"/>
