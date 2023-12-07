@@ -1,16 +1,17 @@
 import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { useSelector, UseSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Avatar, Divider, Tooltip ,Button, Popover, ConfigProvider} from 'antd';
-
+import { handleLogout } from '@/redux/reducerSlices/userSlice';
 function page() {
-  const {userDetail} = useSelector(state=>state.user)
+  const dispatch=useDispatch()
+  const {userDetail,isLoggedIn} = useSelector(state=>state.user)
   const text = <span>{userDetail.email}</span>;
   const content = (
     <div>
       <p>Profile</p>
-      <p>logout</p>
+      <p onClick={()=>dispatch(handleLogout())}>logout</p>
     </div>
   );
   return (
@@ -30,9 +31,8 @@ function page() {
       {/* </li> */}
   
             <li>New Product</li>
-            <li>
-      
-            <div
+            
+      {isLoggedIn ?(<li> <div
         style={{
           marginInlineStart: 80,
           clear: 'both',
@@ -43,10 +43,15 @@ function page() {
         <Avatar src="https://xsgames.co/randomusers/avatar.php?g=pixel&key=1" />
         </Popover>
         
-      </div>
-        </li>
-            <li><Link href='./login'>login</Link></li>
-            <li><Link href='./register'>register</Link></li>
+      </div> </li>):(
+      <>
+      <li><Link href='./login'>login</Link></li>
+      <li><Link href='./register'>register</Link></li>
+      </>
+      )}
+           
+       
+            
         </ul>
      </div>
     </div>

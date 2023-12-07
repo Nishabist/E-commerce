@@ -1,29 +1,32 @@
 const express = require('express')
 var router = express.Router();
 const multer  = require('multer')
-const upload = multer({ dest: 'uploads/image' })
+
 
 const Product=require('../models/products')
 router.use(express.json());
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, '/uploads/image/')
+    cb(null, '/uploads/image')
   },
   filename: function (req, file, cb) {
+    console.log('test')
     const uniqueSuffix = Math.ceil(Math.random()*4000)
     cb(null,  uniqueSuffix+file.originalname )
   }
 })
 
 
+const upload = multer({ storage: storage })
 router.post('/products', upload.single('image'), async(req,res)=>{
-  // console.log(req)
+   
+  console.log(req.file)
   
-  
-  req.body.image=req.file.filename
+  // req.body.image=req.file.filename
   const productdetail=await Product.create(req.body)
   if(productdetail){
+  
    res.json({msg:`${req.body.productName} has been created`})
   }
  

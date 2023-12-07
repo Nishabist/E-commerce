@@ -19,7 +19,8 @@ const userSlice = createSlice({
      }
     },
    handleLogout: (state) => {
-      
+      state.userDetail={}
+      state.isLoggedIn=false
     },
     
   }
