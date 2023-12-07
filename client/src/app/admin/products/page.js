@@ -23,15 +23,18 @@ export const index = () => {
 
   
   const productHandle = async(values) => {
-    var formData=new formData();
+
+    var formData=new FormData();
     formData.append('image',file)
+
     Object.entries(values).map((item,id)=>{
       formData.append(item[0],item[1])
     })
+
     const res = await fetch('http://localhost:4000/products', {
         method:'POST', 
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(values)
+        
+        body: formData
       })
       const data = await res.json()
         messageApi.open({
