@@ -19,9 +19,9 @@ const storage = multer.diskStorage({
 
 router.post('/products', upload.single('image'), async(req,res)=>{
   // console.log(req)
-  // console.log()
-  //req.body.image=req.file.filename
-  //req.body.image=req.file.filename
+  
+  
+  req.body.image=req.file.filename
   const productdetail=await Product.create(req.body)
   if(productdetail){
    res.json({msg:`${req.body.productName} has been created`})
