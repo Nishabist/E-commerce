@@ -5,8 +5,8 @@ import { useSelector, UseSelector } from 'react-redux';
 import { Avatar, Divider, Tooltip ,Button, Popover, ConfigProvider} from 'antd';
 
 function page() {
-  const {userDetails} = useSelector(state=>state.user)
-  const text = <span>{JSON.stringify(userDetails)}</span>;
+  const {userDetail} = useSelector(state=>state.user)
+  const text = <span>{userDetail.email}</span>;
   const content = (
     <div>
       <p>Profile</p>

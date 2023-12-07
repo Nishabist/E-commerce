@@ -85,6 +85,8 @@ import React from 'react';
            <Field name="email" type="email" placeholder="Enter your email"/>
            {errors.email && touched.email ? <div>{errors.email}</div> : null}
            <br /><br />
+           <input type="file" />
+           <br /> <br />
            <Field name="phonenumber" type="string" placeholder="Enter your phonrnumber"/>
            {errors.phonenumber && touched.phonenumber ? <div>{errors.phonenumber}</div> : null}
            <br />

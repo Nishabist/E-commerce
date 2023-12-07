@@ -36,7 +36,7 @@ export const index = () => {
           content: data.msg,
         });
         if(res.status==200){
-          dispatch(setLoginDetails(data.user))
+          dispatch(setLoginDetails(data.userDetail))
            router.push('/')
         }
     

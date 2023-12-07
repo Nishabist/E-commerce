@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react';
+import React ,{useState} from 'react';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 
@@ -13,13 +13,21 @@ const SignupSchema = Yup.object().shape({
   Description:Yup.string(),  
   Brand:Yup.string(),
   price:Yup.string(),
-  Image:Yup.string(),
+  
   Category:Yup.string()
 });
 
 export const index = () => {
+  const[file,setfile]=useState(null)
   const [messageApi, contextHolder] = message.useMessage();
+
+  
   const productHandle = async(values) => {
+    var formData=new formData();
+    formData.append('image',file)
+    Object.entries(values).map((item,id)=>{
+      formData.append(item[0],item[1])
+    })
     const res = await fetch('http://localhost:4000/products', {
         method:'POST', 
         headers: { 'Content-Type': 'application/json' },
@@ -32,7 +40,9 @@ export const index = () => {
         });
       console.log(res)
     } 
-  
+  const uploadImage=(e)=>{
+    setfile(e.target.files[0])
+  }
   return(
   <div className='form'>
     <h1>Product Information</h1>
@@ -45,7 +55,7 @@ export const index = () => {
         Description:'',
         Brand:'',
         price:'',
-        Image:'',
+        
         Category:'', 
       }}
       validationSchema={SignupSchema}
@@ -73,8 +83,7 @@ export const index = () => {
           {errors.price && touched.price ? <div>{errors.price}</div> : null}
           <br />
           <br />
-          <Field name="Image" type="file" placeholder="Enter your  product Image" />
-          {errors.Image && touched.Image ? <div>{errors.Image}</div> : null}
+          <input type="file" onChange={uploadImage}/>
           <br />
           <br />
           <Field name="Category" type="text" placeholder="Enter your product Category" />
