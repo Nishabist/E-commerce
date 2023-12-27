@@ -17,6 +17,7 @@ const registerUser=async(req,res)=>{
       req.body.password=hashpassword
       //create new user with hash password
       const data=await User.create(req.body)
+      
      if(data) res.json({msg :'User registered. Please login'})
    
     }

@@ -1,0 +1,12 @@
+
+.main {
+ 
+  display: flex;
+  justify-content: space-between;
+ line-height: 40px;
+   font-weight: bold;
+   background-color: bisque;
+  position: sticky;
+  margin-bottom: 10px;
+  align-items: center;
+}

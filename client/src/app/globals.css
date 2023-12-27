@@ -78,7 +78,7 @@ button{
 
  
 }
-.main {
+/* .main {
  
   display: flex;
   justify-content: space-between;
@@ -87,7 +87,7 @@ button{
    background-color: bisque;
   position: sticky;
   margin-bottom: 10px;
-}
+} */
 li{
   list-style: none;
 }
@@ -95,3 +95,6 @@ link{
   text-decoration: none;
 } 
 
+:where(.css-dev-only-do-not-override-2i2tap).ant-input-group-wrapper {
+  width: 50%;
+}

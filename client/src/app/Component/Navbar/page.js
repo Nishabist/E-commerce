@@ -2,8 +2,21 @@ import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useSelector, useDispatch } from 'react-redux';
+import { AudioOutlined } from '@ant-design/icons';
 import { Avatar, Divider, Tooltip ,Button, Popover, ConfigProvider} from 'antd';
 import { handleLogout } from '@/redux/reducerSlices/userSlice';
+import styles from '../../../styles/navbarstyle.module.css'
+import { Input, Space } from 'antd';
+const { Search } = Input;
+const suffix = (
+  <AudioOutlined
+    style={{
+      fontSize: 16,
+      color: '#1677ff',
+    }}
+  />
+);
+const onSearch = (value, _e, info) => console.log(info?.source, value);
 function page() {
   const dispatch=useDispatch()
   const {userDetail,isLoggedIn} = useSelector(state=>state.user)
@@ -17,18 +30,19 @@ function page() {
   return (
     <div>
      <div >
-        <ul className="main">
+        <ul className={styles.main}>
             <li> <Link href='./login'><Image src="/Sahayogi.png" width={80} height={80} alt="Picture of the author" /></Link> </li>
             <li>Category</li>
-            <li><input type='search' placeholder='Search....'/></li>
-            {/* <li> <Search
-      placeholder="Enter Your Traking Order"
+           <li>Brand</li>
+           <Search
+      placeholder="input search text"
       enterButton="Search"
-      size="medium"
+      size="large"
+      width="100px"
       suffix={suffix}
       onSearch={onSearch}
-    /> */}
-      {/* </li> */}
+    />
+       
   
             <li>New Product</li>
             

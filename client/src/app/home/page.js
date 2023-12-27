@@ -5,7 +5,7 @@ import React from 'react'
 // import Link from 'next/link'
 import Card from '../Component/card/page'
 import Navbar from '../Component/Navbar/page';
-import Carousel from '../Component/Carousel/page';
+// import Carousel from '../Component/Carousel/page';
 import { useEffect,useState } from 'react';
 import { Pagination } from 'antd';
 function home() {
@@ -28,7 +28,8 @@ function home() {
   
    
 <Navbar/>
-<Carousel/>
+
+{/* <Carousel/> */}
 {/* <Carousel/> */}
 <div className='flex'>
   

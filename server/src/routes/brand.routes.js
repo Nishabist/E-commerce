@@ -3,21 +3,17 @@ var router = express.Router();
 const Brand=require('../models/brand')
 router.use(express.json());
 
+const{createBrand,getBrand,updateBrand,deleteBrand,editBrand}=require('../controller/brand')
 
+router.post('/brand',createBrand)
 
-router.post('/brand',async(req,res)=>{
-    const data =await Brand.create(req.body)
-    if(data){
-        res.json({msg:"brand created sucessfully"})
-    }
-    })
+router.get('/brand',getBrand)
 
-router.get('/brand',async(req,res)=>{
-    const data=await Brand.find()
-    if(data){
-        res.json({brandList:data})
+ 
+ router.put('/brand',updateBrand)
 
-    }
-})
+ router.delete('/brand',deleteBrand)
+
+ router.put('/brand',editBrand)
 
 module.exports=router

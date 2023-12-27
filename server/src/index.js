@@ -7,7 +7,7 @@ const productRouter=require('./routes/products.routes')
 const brandRouter=require('./routes/brand.routes')
 const categoryRouter=require('./routes/category.routes')
 console.log(process.env.SECRET_KEY)
-const port = process.env.PORT
+const port = 4000;
 const cors=require('cors')
 
 connection()
