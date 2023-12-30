@@ -6,7 +6,8 @@ import * as Yup from 'yup';
 import { message, Button, Modal, Card } from 'antd';
 import { RiDeleteBin2Fill } from "react-icons/ri";
 import { FaEdit } from "react-icons/fa";
-
+import Image from 'next/image'
+import styles from '../../styles/category.module.css'
 
 const gridStyle = {
   width: '10%',
@@ -144,9 +145,17 @@ export const index = () => {
   }
 
   return (
-    <div className='form'>
-
-      <h3>Add new category:</h3>
+    <div >
+      <div className={styles.category} >
+      <h3 className={styles.heading}>Add new category:</h3>
+      <Image
+      src="/category.avif"
+      width={300}
+      height={200}
+      alt="Picture of the author"
+    />
+    <br/>
+    <br/>
       <Formik
         initialValues={{
           categoryName: '',
@@ -163,12 +172,15 @@ export const index = () => {
             {contextHolder}
             <Field name="categoryName" type="text" placeholder="Enter your  categoryName" />
             {errors.categoryName && touched.categoryName ? <div>{errors.categoryName}</div> : null}
-  
+    <br/> <br/>
             <button className='submitBtn' type="submit">Submit</button>
             </div>
           </Form>
+          
         )}
       </Formik>
+      </div>
+      <div className={styles.modal}>
       <Modal title="Edit category" open={isModalOpen1} onCancel={handleCancel} footer={null}>
               <EditForm />
             </Modal>
@@ -189,7 +201,7 @@ export const index = () => {
           </Card.Grid>
         }) : "No categories"}
       </Card>
-
+      </div>
 
     </div>
   )

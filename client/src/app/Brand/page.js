@@ -6,7 +6,7 @@ import * as Yup from 'yup';
 import { message, Button, Modal, Card } from 'antd';
 import { RiDeleteBin2Fill } from "react-icons/ri";
 import { FaEdit } from "react-icons/fa";
-
+import styles from '../../styles/brand.module.css'
 
 const gridStyle = {
   width: '10%',
@@ -144,9 +144,11 @@ export const index = () => {
   }
 
   return (
-    <div className='form'>
-
+    <div >
+<div className={styles.brand}>
       <h3>Add new brand:</h3>
+      <br/>
+      <br/>
       <Formik
         initialValues={{
           brandName: '',
@@ -163,12 +165,15 @@ export const index = () => {
             {contextHolder}
             <Field name="brandName" type="text" placeholder="Enter your  brandName" />
             {errors.brandName && touched.brandName ? <div>{errors.brandName}</div> : null}
-  
+              <br/>
+              <br/>
             <button className='submitBtn' type="submit">Submit</button>
             </div>
           </Form>
         )}
       </Formik>
+      </div>
+      <div className={styles.modal}>
       <Modal title="Edit brand" open={isModalOpen1} onCancel={handleCancel} footer={null}>
               <EditForm />
             </Modal>
@@ -177,7 +182,7 @@ export const index = () => {
             </Modal>
       <Card title="Valid brand list">
         {brandList.length > 0 ? brandList.map((item, id) => {
-          return <Card.Grid style={gridStyle}>
+          return <Card.Grid className={styles.box}>
             <h3> {id + 1}.  {item.brandName}</h3>
             <br />
             <div className='icons'>
@@ -190,7 +195,7 @@ export const index = () => {
         }) : "No brand"}
       </Card>
 
-
+      </div>
     </div>
   )
 };

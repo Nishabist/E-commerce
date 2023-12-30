@@ -1,0 +1,21 @@
+.category{
+    border: 1px solid black;
+    width: 400px;
+    margin: 0 auto;
+    text-align: center;
+    align-items: center;
+    padding: 20px;
+    background-color: antiquewhite;
+    
+}
+.heading{
+    margin: 30px;
+    font-weight: 30px;
+    font-size: 30px;
+}
+
+.modal{
+    border: 1px solid black;
+    padding: 30px;
+    margin: 30px;
+}

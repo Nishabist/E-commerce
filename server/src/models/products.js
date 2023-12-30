@@ -6,10 +6,10 @@ const products = new Schema({
     brandName: String,
  productName: String, // String is shorthand for {type: String}
   Description: String,
-  Brand: String,
+
  price :String,
  image:String,
- Category:String,
+ 
 
   
 });

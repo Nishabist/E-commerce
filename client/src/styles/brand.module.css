@@ -1,0 +1,20 @@
+.brand{
+    width:300px;
+    margin:0 auto ;
+    border:1px solid black;
+    text-align: center;
+    align-items: center;
+    padding: 40px;
+    background-color: antiquewhite;
+}
+.modal{
+    width: 800px;
+    margin: 0 auto;
+
+}
+.box{
+    text-align: center;
+    align-items: center;
+    margin: 10px;
+    background-color: antiquewhite;
+}
