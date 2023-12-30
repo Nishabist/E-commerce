@@ -10,7 +10,7 @@ const createBrand=async(req,res)=>{
   const getBrand=async(req,res)=>{
     const data= await Brand.find()
     if(data){
-      res.json({BrandList: data})
+      res.json({brandList: data})
     }
    }
 
@@ -37,7 +37,7 @@ const editBrand=async(req,res)=>{
     const data = await Brand.findByIdAndUpdate(req.params.id,req.body);
     console.log(data);
     if(data){
-      res.json({msg:'successfully updated profile details',BrandList:data})
+      res.json({msg:'successfully updated profile details',brandList:data})
     }else{
       res.json({msg:'couldnot update profile details'});
     }

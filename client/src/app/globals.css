@@ -30,7 +30,7 @@
 }
 
 
-.form{
+/* .form{
   border: 1px solid black;
  width: 300px;
  margin: auto;
@@ -40,14 +40,14 @@
  color: #090000;
  background-color: #e1b9b9;
  padding-top: 50px;
-}
+} */
 button{
   border-radius: 50px;
   background-color: rgb(215, 210, 226);
   margin: 5px;
 }
 
-.form1{
+/* .form1{
   border: 1px solid black;
   width:300px;
   margin: auto;
@@ -57,7 +57,7 @@ button{
   text-align: center;
   height: 600px;
   padding-top: 50px;
-}
+} */
 
 .top{
 

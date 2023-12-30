@@ -18,9 +18,9 @@ const suffix = (
 );
 const onSearch = (value, _e, info) => console.log(info?.source, value);
 function page() {
-  const dispatch=useDispatch()
+  const dispatch= useDispatch()
   const {userDetail,isLoggedIn} = useSelector(state=>state.user)
-  const text = <span>{userDetail.email}</span>;
+  const text = <span>{userDetail?.email}</span>;
   const content = (
     <div>
       <p>Profile</p>
@@ -44,7 +44,7 @@ function page() {
     />
        
   
-            <li>New Product</li>
+            <li>About Us</li>
             
       {isLoggedIn ?(<li> <div
         style={{

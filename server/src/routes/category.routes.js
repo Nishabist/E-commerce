@@ -1,23 +1,19 @@
 const express = require('express')
 var router = express.Router();
+
+const{createCategory,getCategory,updateCategory,deleteCategory,editCategory}=require('../controller/categories')
 const Category=require('../models/category')
 router.use(express.json());
 
+router.post('/categories',createCategory)
 
+router.get('/categories',getCategory)
 
-router.post('/category',async(req,res)=>{
-    const data =await Category.create(req.body)
-    if(data){
-        res.json({msg:"Category created sucessfully"})
-    }
-    })
+ 
+ router.put('/categories',updateCategory)
 
-router.get('/category',async(req,res)=>{
-    const data=await Category.find()
-    if(data){
-        res.json({categoryList:data})
+ router.delete('/categories',deleteCategory)
 
-    }
-})
+ router.put('/categories',editCategory)
 
 module.exports=router

@@ -1,14 +1,19 @@
 'use client'
 
-import React ,{useState} from 'react';
+import React ,{useState,useEffect} from 'react';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 
 import {  message } from 'antd';
-
+import {setProductDetails} from '../../../redux/reducerSlices/productSlice'
+import { useSelector, useDispatch } from 'react-redux';
 
 const SignupSchema = Yup.object().shape({
-
+  producCateogry: Yup.string()
+  .min(2, 'Too Short!')
+  .max(50, 'Too Long!')
+  .required('Required'),
+  producBrand: Yup.string(),
   productName: Yup.string().required('Required'),
   Description:Yup.string(),  
   Brand:Yup.string(),
@@ -18,10 +23,28 @@ const SignupSchema = Yup.object().shape({
 });
 
 export const index = () => {
+  
+  const dispatch= useDispatch()
   const[file,setfile]=useState(null)
   const [messageApi, contextHolder] = message.useMessage();
+  const [categoryList, setCategoryList] = useState({})
+  const [brandList, setBrandList] = useState({})
+  const categoryFetch = async()=> {
+    const res = await fetch(`http://localhost:4000/categories`)
+    const data = await res.json()
+    setCategoryList(data.categoryList) 
+  }
+ 
+  const brandFetch = async()=> {
+    const res = await fetch(`http://localhost:4000/brand`)
+    const data = await res.json()
+    setBrandList(data.brandList) 
+  }
 
-  
+  useEffect(()=>{
+    categoryFetch(),
+    brandFetch()
+  },[])
   const productHandle = async(values) => {
 
     var formData=new FormData();
@@ -53,10 +76,11 @@ export const index = () => {
     
     <Formik
       initialValues={{
-       
+        categoryName: categoryList?.[0]?.categoryName,
+        brandName: brandList?.[0]?.brandName,
         productName: '',
         Description:'',
-        Brand:'',
+       
         price:'',
         
         Category:'', 
@@ -70,6 +94,22 @@ export const index = () => {
       {({ errors, touched }) => (
         <Form >
          {contextHolder}
+
+         <p> Category:</p>
+          <Field as='select'   name='categoryName' >
+            {categoryList.length>0 && categoryList.map((item)=>{
+              return   <option value={item.categoryName}>{item.categoryName}</option>
+            })}
+            </Field>
+            <br/>
+             <br/><p> Brand:</p>
+          <Field as='select'   name='barndName' >
+            {brandList.length>0 && brandList.map((item)=>{
+              return   <option value={item.brandName}>{item.brandName}</option>
+            })}
+            </Field>
+            <br/>
+             <br/>
           <Field name="productName" type="text" placeholder="Enter your  productName" />
           {errors.productName && touched.productName ? <div>{errors.productNamer}</div> : null}
           <br />
@@ -77,10 +117,7 @@ export const index = () => {
           <Field name="Description" type="text" placeholder="Enter about your product"/>
           {errors.Description && touched.Description? <div>{errors.Description}</div> : null}
           <br />
-          <br />
-          <Field name="Brand" type="textr" placeholder="Enter your Brand" />
-          {errors.Brand && touched.Brand ? <div>{errors.Brand}</div> : null}
-          <br />
+         
           <br />
           <Field name="price" type="text" placeholder="Enter your product price" />
           {errors.price && touched.price ? <div>{errors.price}</div> : null}
