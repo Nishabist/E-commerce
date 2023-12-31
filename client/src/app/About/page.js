@@ -1,9 +1,9 @@
 import React from 'react'
-import NavBar from '../Component/Navbar/page';
+import NavBar from '../../Component/Navbar/page';
 function page() {
   return (
     <>
-      {/* <NavBar/> */}
+      <NavBar/>
       <h2>History</h2>
     </>
   )

@@ -3,8 +3,8 @@ import React from 'react'
 
 // import Image from 'next/image'
 // import Link from 'next/link'
-import Card from '../Component/card/page'
-import Navbar from '../Component/Navbar/page';
+import Card from '../card/page'
+import Navbar from '../Navbar/page';
 // import Carousel from '../Component/Carousel/page';
 import { useEffect,useState } from 'react';
 import { Pagination } from 'antd';

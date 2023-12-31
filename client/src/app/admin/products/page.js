@@ -131,7 +131,7 @@ export const index = () => {
           <br />
           <br />
           Upload product Image <br/> 
-          <input type="file" onChange={uploadImage}/>
+          <input className={styles.image} type="file" onChange={uploadImage}/>
           <br />
           <br />
          
