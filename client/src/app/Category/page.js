@@ -18,12 +18,8 @@ const gridStyle = {
 const SignupSchema = Yup.object().shape({
 
   productName: Yup.string().required('Required'),
-  Description: Yup.string().
-    required('Required'),
-  Brand: Yup.string(),
-  price: Yup.string(),
-  Image: Yup.string(),
-  Category: Yup.string()
+  categoryName: Yup.string(),
+  subCategory:Yup.string(),
 });
 
 
@@ -136,6 +132,13 @@ export const index = () => {
               ) : null}
             </div>
 
+            <div>
+              <label>SubCategory name:</label>
+              <Field name="subCategory" placeholder="subCategory" />
+              {errors.subCategory && touched.subCategory ? (
+                <div>{errors.subCategory}</div>
+              ) : null}
+            </div>
           
             <button type="submit">Submit</button>
           </Form>
@@ -159,6 +162,7 @@ export const index = () => {
       <Formik
         initialValues={{
           categoryName: '',
+          subCategory:'',
          
         }}
         // validationSchema={SignupSchema}
@@ -172,6 +176,9 @@ export const index = () => {
             {contextHolder}
             <Field name="categoryName" type="text" placeholder="Enter your  categoryName" />
             {errors.categoryName && touched.categoryName ? <div>{errors.categoryName}</div> : null}
+    <br/> <br/>
+    <Field name="subCategory" type="text" placeholder="Enter your  subCategory" />
+            {errors.subCategory && touched.subCategory ? <div>{errors.subCategory}</div> : null}
     <br/> <br/>
             <button className='submitBtn' type="submit">Submit</button>
             </div>

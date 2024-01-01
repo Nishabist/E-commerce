@@ -45,4 +45,8 @@ router.post('/products', upload.single('image'), async(req,res)=>{
       }
      })
 
+router.get('/products', async(req,res)=>{
+  
+})
+
    module.exports=router

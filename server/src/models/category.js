@@ -3,7 +3,7 @@ const { Schema } = mongoose;
 
 const category = new Schema({
     categoryName: String, // String is shorthand for {type: String}
- 
+    subCategory:String,
 
   
 });
