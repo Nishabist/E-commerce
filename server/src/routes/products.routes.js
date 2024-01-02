@@ -46,7 +46,8 @@ router.post('/products', upload.single('image'), async(req,res)=>{
      })
 
 router.get('/products', async(req,res)=>{
-  
+  const productImage=await Product.findById(req.query.productId)
+  console.log(productImage)
 })
 
    module.exports=router
