@@ -1,4 +1,4 @@
-
+'use client'
 import React, { useState ,useEffect} from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -23,6 +23,7 @@ function page() {
   const dispatch= useDispatch()
   const[categoryList,setCategoryList]=useState([]);
   const[selecedCategory,setSelectedCategory]=useState({})
+  const[brandList,setBrandList]=useState([]);
   const {userDetail,isLoggedIn} = useSelector(state=>state.user)
   const text = <span>{userDetail?.email}</span>;
 
@@ -32,8 +33,15 @@ function page() {
     setCategoryList(data.categoryList) 
   }
 
+  const brandFetch = async()=> {
+        const res = await fetch(`http://localhost:4000/brand`)
+        const data = await res.json()
+        setBrandList(data.brandList) 
+      }
+
   useEffect(()=>{
     categoryFetch();
+    brandFetch();
   },[])
   const content = (
     <div>
@@ -94,21 +102,14 @@ function page() {
             })}
             </div>
             {JSON.stringify(selecedCategory.subCategory)}
+              {brandList?.length>0 && brandList.map((item)=>{
+            return (<div>{item.brandName} </div>)
+           })}
     </div>
   )
 }
 
 export default page
-
-
-
-
-
-
-
-
-
-
 
 
 // import React, { useEffect, useState } from 'react';
