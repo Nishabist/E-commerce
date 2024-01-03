@@ -22,7 +22,7 @@ function page() {
 
   const dispatch= useDispatch()
   const[categoryList,setCategoryList]=useState([]);
-
+  const[selecedCategory,setSelectedCategory]=useState({})
   const {userDetail,isLoggedIn} = useSelector(state=>state.user)
   const text = <span>{userDetail?.email}</span>;
 
@@ -47,7 +47,7 @@ function page() {
    
         <ul className={styles.main}>
             <li> <Link href='./login'><Image src="/Sahayogi.png" width={80} height={80} alt="Picture of the author" /></Link> </li>
-            <li>Category</li>
+            <li >Category</li>
            <li>Brand</li>
            <Search
       placeholder="input search text"
@@ -84,10 +84,16 @@ function page() {
         </ul>
      </div>
      <div className={styles.listcat}>  {categoryList.length>0 && categoryList.map((item)=>{
-              return <div >  {item.categoryName}
+              return <div onClick={()=>setSelectedCategory(item)} >  {item.categoryName}
                </div>
             })}
             </div>
+            <div className={styles.cat}>  {selecedCategory.length>0 && selecedCategory.map((item)=>{
+              return <div  >  {item.subCategoryName}
+               </div>
+            })}
+            </div>
+            {JSON.stringify(selecedCategory.subCategory)}
     </div>
   )
 }

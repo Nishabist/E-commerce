@@ -45,6 +45,7 @@ function home() {
 })}
 
 </div>
+<br/>
 
 <Pagination onChange={(page)=>fetchProduct(page)} defaultCurrent={1} total={count} pageSize={3}/>
 </div>)

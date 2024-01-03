@@ -11,6 +11,8 @@
   align-items: center;
 }
 .listcat{
-  border: 1px solid black;
-  
+background-color: rgb(234, 195, 123);
+  width: 300px;
+  padding: 20px;
+margin: 10px;
 }
