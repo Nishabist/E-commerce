@@ -1,5 +1,8 @@
 .main{
     display: flex;
     justify-content: space-around;
-    margin: 10px;
+    background-color: #6b6b6b;
+    height: 25vh;
+    margin-top: 10px;
+    padding: 10px;
 }
