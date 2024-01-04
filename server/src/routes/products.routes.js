@@ -56,7 +56,10 @@ router.get('/products', async(req,res)=>{
 router.get('/products-image',async(req,res)=>{
   console.log(__dirname)
   const productDetail=await Product.findById(req.query.productId)
+  console.log(productDetail)
   if(productDetail?.image){
+
+
     const imgPath = path.join(__dirname + '/../../uploads/image/',productDetail.image)
     res.sendFile(imgPath)
   }else{
