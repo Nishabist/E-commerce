@@ -45,7 +45,7 @@ export const index = () => {
   return(
   <div className='form'>
     <h1>Login</h1>
-    
+   
     <Image
       src="/Sahayogi.png"
       width={80}
