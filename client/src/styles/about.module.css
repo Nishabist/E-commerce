@@ -1,15 +1,21 @@
-.about{
-   
-    padding: 20px;
-    margin: 10px;
+.body{
+    background-color: rgb(246,159,73);
 }
 .aboutpage{
-   background-color: rgb(224, 216, 200);
-   height: 100vh;
+  line-height: 25px;
   
+  margin: 5px 100px;
    align-items: center;
-   text-align: center;
+   text-align: justify;
 }
-.middle{
-    padding: 20px;
+
+.about{
+    align-items: center;
+    
+}
+.head{
+   
+ text-align: center;  
+ margin: 10px 0; 
+    
 }
