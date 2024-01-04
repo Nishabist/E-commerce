@@ -3,7 +3,7 @@ var router = express.Router();
 const Product=require('../models/products')
 router.use(express.json());
 const multer  = require('multer')
-
+const path=require('path')
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, 'uploads/image')
@@ -50,5 +50,26 @@ router.get('/products', async(req,res)=>{
   const productImage=await Product.findById(req.query.productId)
   console.log(productImage)
 })
+
+
+
+router.get('/products-image',async(req,res)=>{
+  console.log(__dirname)
+  const productDetail=await Product.findById(req.query.productId)
+  if(productDetail?.image){
+    const imgPath = path.join(__dirname + '/../../uploads/image/',productDetail.image)
+    res.sendFile(imgPath)
+  }else{
+    const imgPath = path.join(__dirname + '/../../uploads/image/','default.png')
+    res.sendFile(imgPath)
+  }
+
+})
+
+
+
+
+
+
 
    module.exports=router
