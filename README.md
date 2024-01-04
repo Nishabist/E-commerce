@@ -12,5 +12,7 @@
 
   src folder is created and index.html is created inside it
 
-  # packages are installed
+  # packages  installed
    npm i express mongoose cors
+
+   
