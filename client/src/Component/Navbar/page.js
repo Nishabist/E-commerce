@@ -67,7 +67,7 @@ function page() {
     />
        
   
-            <li>About Us</li>
+            <li> <Link href="/About" >About Us</Link></li>
             
       {isLoggedIn ?(<li> <div
         style={{
