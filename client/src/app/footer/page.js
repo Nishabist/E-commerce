@@ -9,13 +9,7 @@ function page() {
      <div className={styles.main}>
      
         <div>
-            <p>
-        <Image
-  src="/Sahayogi.png"
-  width={80}
-  height={80}
-  alt="Picture of the author"
-/> </p>
+        
 <p>This is nice place ti do shopping</p>
 <p>Contact with us through different social media account</p>
         </div>
@@ -32,7 +26,7 @@ function page() {
             </div>
 
         <div>
-           <h4>product</h4> 
+           <h4>Product</h4> 
            <ul>
             <li>Product description </li>
             <li>Data Governance</li>

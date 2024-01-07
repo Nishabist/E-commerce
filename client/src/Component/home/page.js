@@ -5,6 +5,7 @@ import React from 'react'
 // import Link from 'next/link'
 import Card from '../card/page'
 import Navbar from '../Navbar/page';
+import Footer from '../../app/footer/page'
 // import Carousel from '../Component/Carousel/page';
 import { useEffect,useState } from 'react';
 import { Pagination } from 'antd';
@@ -48,10 +49,11 @@ function home() {
 <br/>
 
 <Pagination onChange={(page)=>fetchProduct(page)} defaultCurrent={1} total={count} pageSize={3}/>
+    
+<Footer/> 
 </div>)
 
-    
-  
+
 }
 
 export default home

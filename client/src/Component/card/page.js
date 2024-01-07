@@ -10,7 +10,7 @@ function page(props)  {
        <Card 
     hoverable
     style={{ width: 240 , display:Flex,gap:5}}
-    cover={<img alt="example" src={`http://localhost:4000/products-image?productId=${props.item._id}` }/>}
+    cover={<img style={{overflow:'hidden',objectFit:'fill',}} alt="example" src={`http://localhost:4000/products-image?productId=${props.item._id}` }/>}
   >
     <Meta  title={props.item.productName} description={props.item.Description} />
     {props?.item?.createdAt ? diffTime : null}

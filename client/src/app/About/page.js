@@ -1,5 +1,6 @@
 import React from 'react'
 //import NavBar from '../../Component/Navbar/page';
+import Footer from '../../app/footer/page'
 import styles from '../../styles/about.module.css'
 function page() {
   return (
@@ -33,6 +34,7 @@ function page() {
         <p>Thank you for being a part of our journey . Let's redefine style together.</p>
         </div>
         </div>
+        <Footer/>
     </>
   )
 }

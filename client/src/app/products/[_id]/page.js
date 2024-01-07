@@ -2,7 +2,7 @@
 
 import React,{useEffect,useState} from 'react'
 
-function page({params}) {
+function page({params,props}) {
     const[productDetail,setproductDetail]=useState({})
     const fetchProduct=async()=>{
      const res=await fetch(`http://localhost:4000/products/${params._id}`)
@@ -15,8 +15,16 @@ function page({params}) {
      },[])
   return (
     <>
-    
-    <div>{JSON.stringify(productDetail)} Hello it is page</div>
+    {/* {JSON.stringify(productDetail)} */}
+    <div>
+      
+       {productDetail.productName}
+       <div>
+        <img style={{overflow:'hidden',objectFit:'fill',}} src={`http://localhost:4000/products-image?productId=${params._id}` }/>
+        </div> 
+       {/* {productDetail.image} */}
+      
+      </div>
     
     </>
   )

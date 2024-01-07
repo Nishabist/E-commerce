@@ -4,6 +4,7 @@ const Product=require('../models/products')
 router.use(express.json());
 const multer  = require('multer')
 const path=require('path')
+
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, 'uploads/image')
@@ -18,6 +19,7 @@ const storage = multer.diskStorage({
 
 
 const upload = multer({ storage: storage })
+
 router.post('/products', upload.single('image'), async(req,res)=>{
     req.body.image=req.file.filename
   const productdetail=await Product.create(req.body)

@@ -105,7 +105,7 @@ export const index = () => {
             </Field>
             <br/>
              <br/><p> Brand:</p>
-          <Field as='select'   name='barndName' >
+          <Field as='select'   name='brandName' >
             {brandList.length>0 && brandList.map((item)=>{
               return   <option value={item.brandName}>{item.brandName}</option>
             })}
