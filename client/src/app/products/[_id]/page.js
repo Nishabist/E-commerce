@@ -1,6 +1,7 @@
 'use client'
 
 import React,{useEffect,useState} from 'react'
+import styles from '../../../styles/page.module.css'
 
 function page({params,props}) {
     const[productDetail,setproductDetail]=useState({})
@@ -17,13 +18,21 @@ function page({params,props}) {
     <>
     {/* {JSON.stringify(productDetail)} */}
     <div>
-      
-       {productDetail.productName}
+      <div className={styles.design}>
+ 
        <div>
-        <img style={{overflow:'hidden',objectFit:'fill',}} src={`http://localhost:4000/products-image?productId=${params._id}` }/>
-        </div> 
+        <img style={{overflow:'hidden',objectFit:'fill',width:'300px',height:'500px'}} src={`http://localhost:4000/products-image?productId=${params._id}` }/>
+        </div>
+
+        <div>  
+           <p> {productDetail.productName}</p>  
+           <p>{productDetail.price}</p> 
+           </div>
+
+
+
        {/* {productDetail.image} */}
-      
+       </div>
       </div>
     
     </>
