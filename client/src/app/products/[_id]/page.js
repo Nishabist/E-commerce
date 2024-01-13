@@ -21,7 +21,7 @@ function page({params,props}) {
       <div className={styles.design}>
  
        <div>
-        <img style={{overflow:'hidden',objectFit:'fill',width:'300px',height:'500px'}} src={`http://localhost:4000/products-image?productId=${params._id}` }/>
+        <img className={styles.image} style={{overflow:'hidden',objectFit:'fill',}} src={`http://localhost:4000/products-image?productId=${params._id}` }/>
         </div>
 
         <div>  
