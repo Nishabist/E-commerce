@@ -20,13 +20,16 @@ function page({params,props}) {
     <div>
       <div className={styles.design}>
  
-       <div>
+       <div className={styles.imgdesign}>
         <img className={styles.image} style={{overflow:'hidden',objectFit:'fill',}} src={`http://localhost:4000/products-image?productId=${params._id}` }/>
         </div>
 
-        <div>  
+        <div className={styles.productdesign}>  
            <p> {productDetail.productName}</p>  
            <p>{productDetail.price}</p> 
+           <button>Buy Now</button> <br/>
+           <button>Add To Cart</button>
+           
            </div>
 
 
