@@ -2,6 +2,7 @@
 
 import React,{useEffect,useState} from 'react'
 import styles from '../../../styles/page.module.css'
+import  Footer from '../../footer/page'
 
 function page({params,props}) {
     const[productDetail,setproductDetail]=useState({})
@@ -25,10 +26,10 @@ function page({params,props}) {
         </div>
 
         <div className={styles.productdesign}>  
-           <p> {productDetail.productName}</p>  
+           <p className={styles.productname}> {productDetail.productName}</p>  
            <p>{productDetail.price}</p> 
-           <button>Buy Now</button> <br/>
-           <button>Add To Cart</button>
+           <button className={styles.botton}>Buy Now</button> <br/>
+           <button className={styles.botton}>Add To Cart</button>
            
            </div>
 
@@ -36,6 +37,7 @@ function page({params,props}) {
 
        {/* {productDetail.image} */}
        </div>
+       <Footer/>
       </div>
     
     </>
